@@ -21,7 +21,7 @@ public class SpringApp implements CommandLineRunner
     @Override
     public void run(String... args) throws Exception
     {
-        Set<String> annotatedClasses = classScanner.findAnnotatedClasses(MyCustomAnnotation.class);
+        Set<String> annotatedClasses = classScanner.findAnnotatedClasses(MyCustomAnnotation.class, "xyz.reachadi");
 
         for (String c : annotatedClasses)
             System.out.println("Annotated Class : " + c);

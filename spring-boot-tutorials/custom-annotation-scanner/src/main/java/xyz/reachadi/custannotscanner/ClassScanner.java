@@ -13,16 +13,14 @@ import java.util.Set;
 @Component
 public class ClassScanner
 {
-    public static final String[] PACKAGES = {"xyz.reachadi"};
-
-    public Set<String> findAnnotatedClasses(Class<? extends Annotation> annotationType)
+    public Set<String> findAnnotatedClasses(Class<? extends Annotation> annotationType, String... packages)
     {
         ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(false);
         provider.addIncludeFilter(new AnnotationTypeFilter(annotationType));
 
         Set<String> ret = new HashSet<>();
 
-        for (String pkg : PACKAGES)
+        for (String pkg : packages)
         {
             Set<BeanDefinition> beanDefs = provider.findCandidateComponents(pkg);
             beanDefs.stream()
